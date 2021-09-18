@@ -1,7 +1,7 @@
 import "./style.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 
-export default function Topbar() {
+export const Topbar = () => {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -35,8 +35,10 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImg"/>
+        <img src="/assets/avatar/avatar8.jpg" alt="" className="topbarImg"/>
       </div>
     </div>
   );
 }
+
+export default Topbar;
