@@ -17,9 +17,9 @@ const Login = () => {
         </div>
 
         <div className="loginLeft">
-          <h3 className="loginLogo">SocialChat</h3>
+          <h3 className="loginLogo">Bate-Papo Social</h3>
           <span className="loginDesc">
-            Conecte-se com seus amigos no SocialChat.
+            Conecte-se com seus amigos no Bate-Papo Social.
           </span>
         </div>
 

@@ -11,7 +11,7 @@
   .loginWrapper {
     width: 70%;
     height: 70%;
-    display: flex;
+    display: flex;    
   }
   
   .loginLeft,
@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 20px;   
   }
   
   .loginLogo {
@@ -31,7 +31,7 @@
   }
   
   .loginDesc {
-    font-size: 20px;
+    font-size: 20px;    
   }
   
   .loginBox{
@@ -41,7 +41,7 @@
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-between; 
   }
   
   .loginInput{

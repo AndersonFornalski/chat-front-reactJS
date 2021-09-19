@@ -1,11 +1,14 @@
 import "./style.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 export const Topbar = () => {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <span className="logo">SocialChat</span> 
+        <Link to="/" style={{textDecoration:"none"}}>
+          <span className="logo">Bate-Papo Social</span> 
+        </Link>
       </div>
       <img src="/assets/avatar/avatar8.jpg" alt="" className="topbarImg"/>
      
