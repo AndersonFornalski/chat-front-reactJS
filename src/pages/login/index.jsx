@@ -1,5 +1,6 @@
 import { CircularProgress } from "@material-ui/core";
 import { useContext, useRef } from "react";
+import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import "./style.css";
@@ -14,7 +15,6 @@ const Login = () => {
     console.log("clicked")
     loginCall({ email: email.current.value, 
                 password: password.current.value }, dispatch );
-    
   }
   console.log(user)
   
@@ -38,11 +38,13 @@ const Login = () => {
             </button>
             
             <span className="loginForgot">esqueceu sua senha?</span>
-            <button 
-              className="loginRegisterButton"
-              >
-              Crie Uma Nova Conta
-            </button>
+            <Link to={"/cadastro"}>
+              <button 
+                className="loginRegisterButton"
+                >
+                Crie Uma Nova Conta
+              </button>
+            </Link>
           </form>
         </div>
 
