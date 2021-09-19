@@ -3,6 +3,7 @@ import { MoreVert } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { format } from "timeago.js";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
   const [ like, setLike ] = useState(post.likes.length)
@@ -11,7 +12,7 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get(`/users/${post.userId}`)
+      const response = await axios.get(`/users?userId=${post.userId}`)
       setUser(response.data)
       console.log(response.data)
     };
@@ -28,11 +29,13 @@ const Post = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`/profile/${user.username}`}>
             <img
               className="postProfileImg"
               src={ user.profilePicture || "assets/avatar/noAvatar.png"}
               alt=""
-            />
+              />
+             </Link>
             <span className="postUsername">
               { user.username }
             </span>

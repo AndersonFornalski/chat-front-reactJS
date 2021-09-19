@@ -4,13 +4,14 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Feed = () => {
+const Feed = ({ username }) => {
   const [ posts, setPosts ] = useState([]);
 
-  useEffect( async() => {
+  useEffect(() => {
     const fetchPost = async () => {
-      const response = await axios.get("posts/timeline/6145f7ad03a10efa49a79d3f")
-      console.log(response.data);
+      const response = username
+      ? await axios.get("posts/profile/" + username)
+      : await axios.get("posts/timeline/6145f7ad03a10efa49a79d3f")
       setPosts(response.data);
     };
     fetchPost();

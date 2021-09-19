@@ -1,19 +1,49 @@
+import { CircularProgress } from "@material-ui/core";
+import { useContext, useRef } from "react";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 import "./style.css";
 
 const Login = () => {
+  const email = useRef();
+  const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("clicked")
+    loginCall({ email: email.current.value, 
+                password: password.current.value }, dispatch );
+    
+  }
+  console.log(user)
+  
   return (
     <div className="login">
       <div className="loginWrapper">        
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <button className="loginButton">Entrar</button>
+          <form onSubmit={handleClick} className="loginBox">
+            <input placeholder="Email" required  type="email" className="loginInput" ref={email} />
+            <input 
+              placeholder="Password" 
+              required ref={password} 
+              type="password" 
+              className="loginInput"
+              minLength="6" />
+            
+            <button className="loginButton">
+              { isFetching 
+              ? <CircularProgress color="success" size="30px"/> 
+              : "Entrar" }
+            </button>
+            
             <span className="loginForgot">esqueceu sua senha?</span>
-            <button className="loginRegisterButton">
+            <button 
+              className="loginRegisterButton"
+              >
               Crie Uma Nova Conta
             </button>
-          </div>
+          </form>
         </div>
 
         <div className="loginLeft">

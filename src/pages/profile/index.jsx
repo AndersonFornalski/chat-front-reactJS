@@ -3,8 +3,22 @@ import Topbar from "../../components/TopBar";
 import Sidebar from "../../components/SideBar";
 import Feed from "../../components/Feed";
 import Rightbar from "../../components/RightBar";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
 
 const Profile = () => {
+  const [ user, setUser ] = useState({})
+  const username = useParams().username;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`/users?username=${username}`)
+      setUser(response.data)
+    };
+    fetchUser()
+  },[username]);
+
   return (
     <>
       <Topbar />
@@ -15,7 +29,7 @@ const Profile = () => {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src="assets/posts/post4.jpg"
+                src={ user.coverPicture || "assets/avatar/noAvatar.png" }
                 alt=""
               />
               <img
@@ -25,13 +39,13 @@ const Profile = () => {
               />
             </div>
             <div className="profileInfo">
-                <h4 className="profileInfoName">Anderson Fornalski</h4>
-                <span className="profileInfoDesc">Beleza galera do bem!</span>
+                <h4 className="profileInfoName">{ user.username }</h4>
+                <span className="profileInfoDesc">{ user.desc }</span>
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed />
-            <Rightbar profile/>
+            <Feed username={username}/>
+            <Rightbar user={ user }/>
           </div>
         </div>
       </div>
