@@ -1,4 +1,6 @@
 import "./style.css";
+import { Users } from "../../Data";
+import Online from "../Online";
 
 const Rightbar = ({ profile }) => {
   const HomeRightbar = () => {
@@ -7,13 +9,15 @@ const Rightbar = ({ profile }) => {
         <div className="birthdayContainer">
           <img className="birthdayImg" src="assets/icon/coracao.png" alt="" />
           <span className="birthdayText">
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
+            <b>Florisbela</b> e <b>3 outros amigos</b> estao de aniversario hoje.
           </span>
         </div>
-        <img className="rightbarAd" src="assets/icon/like.png" alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
+        <img className="rightbarAd" src="assets/icon/like.png" alt=""/>
+        <h4 className="rightbarTitle">Amigos Online</h4>
         <ul className="rightbarFriendList">
-          
+          {Users.map((u) => (
+              <Online key={u.id} user={u} />
+          ))}
         </ul>
       </>
     );
@@ -26,15 +30,15 @@ const Rightbar = ({ profile }) => {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Cidade:</span>
-            <span className="rightbarInfoValue">New York</span>
+            <span className="rightbarInfoValue">Alvorada</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">De:</span>
-            <span className="rightbarInfoValue">Madrid</span>
+            <span className="rightbarInfoValue">Rio Grande Do Sul</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relacionamento:</span>
-            <span className="rightbarInfoValue">Solteiro</span>
+            <span className="rightbarInfoValue">Casado</span>
           </div>
         </div>
         <h4 className="rightbarTitle">Amigos</h4>

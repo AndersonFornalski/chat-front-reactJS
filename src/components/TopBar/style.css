@@ -78,16 +78,16 @@
   .topbarIconBadge {
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: rgb(243, 247, 46);
     border-radius: 50%;
-    color: white;
+    color: rgb(158, 31, 197);
     position: absolute;
     top: -5px;
-    right: -5px;
+    right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
   }
   
   .topbarImg {

@@ -31,10 +31,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
   }
   
   .sidebarIcon {
     margin-right: 15px;
+    cursor: pointer;
   }
   
   .sidebarButton {
@@ -47,6 +49,7 @@
   
   .sidebarHr {
     margin: 20px 0;
+    border: 2px solid rgb(94, 31, 167)
   }
   
   .sidebarFriendList {

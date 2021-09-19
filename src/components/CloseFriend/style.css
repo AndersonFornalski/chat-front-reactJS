@@ -1,0 +1,21 @@
+.sidebarFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebarFriendImg {
+    width: 70px;
+    height: 70px;
+    border-radius: 0 20px 0 20px;
+    border: 2px solid rgb(111, 30, 165);
+    object-fit: cover;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .sidebarFriendName{
+    color: rgb(125, 54, 192);
+    cursor: pointer;
+    font-weight: bolder;
+  }
