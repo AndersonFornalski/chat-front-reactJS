@@ -1,14 +1,20 @@
 import "./style.css";
 import { MoreVert } from "@material-ui/icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { format } from "timeago.js";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Post = ({ post }) => {
-  const [ like, setLike ] = useState(post.likes.length)
-  const [ isLiked, setIsLiked ] = useState(false)
-  const [ user, setUser ] = useState({})
+  const [ like, setLike ] = useState(post.likes.length);
+  const [ isLiked, setIsLiked ] = useState(false);
+  const [ user, setUser ] = useState({});
+  const { user: currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id))
+  },[currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,6 +26,9 @@ const Post = ({ post }) => {
   },[post.userId]);
   
   const likeHandler = () => {
+    try {
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id});
+    } catch (error) { }
     setLike( isLiked ? like-1 : like + 1)
     setIsLiked( !isLiked )
     
@@ -32,7 +41,7 @@ const Post = ({ post }) => {
             <Link to={`/profile/${user.username}`}>
             <img
               className="postProfileImg"
-              src={ user.profilePicture || "assets/avatar/noAvatar.png"}
+              src={ user.profilePicture || "/assets/avatar/noAvatar.png"}
               alt=""
               />
              </Link>
@@ -51,8 +60,8 @@ const Post = ({ post }) => {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className="likeIcon" src="assets/icon/like.png" onClick={likeHandler} alt="" />
-            <img className="likeIcon" src="assets/icon/coracao.png" onClick={likeHandler} alt="" />
+            <img className="likeIcon" src="/assets/icon/like.png" onClick={likeHandler} alt="" />
+            <img className="likeIcon" src="/assets/icon/coracao.png" onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} Pessoas gostaram disso </span>  
           </div>
           <div className="postBottomRight">

@@ -1,8 +1,12 @@
-import "./style.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import "./style.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Topbar = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -10,7 +14,15 @@ export const Topbar = () => {
           <span className="logo">Bate-Papo Social</span> 
         </Link>
       </div>
-      <img src="/assets/avatar/avatar8.jpg" alt="" className="topbarImg"/>
+       <Link to={`/profile/${user.username}`}>
+        <img 
+          src={ 
+            user.profilePicture 
+            ? user.profilePicture 
+            :  "/assets/avatar/noAvatar.png" } 
+            alt="" 
+            className="topbarImg"/>
+        </Link> 
      
       <div className="topbarRight">
         <div className="topbarLinks">
