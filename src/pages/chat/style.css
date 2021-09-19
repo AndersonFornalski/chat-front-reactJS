@@ -1,0 +1,22 @@
+.messenger{
+   height: calc(100vh - 70px);
+   display: flex;
+}
+
+.chatMenu{
+    flex: 3.5;
+    background-color: rgb(236, 167, 39);
+    text-align: center;
+}
+
+.chatBox{
+    flex: 5.5;
+    background-color: rgb(60, 255, 0);
+    text-align: center;
+}
+
+.chatOnline{
+    flex: 2;
+    background-color: aqua;
+    text-align: center;
+}

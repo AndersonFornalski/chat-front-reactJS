@@ -12,7 +12,7 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if( confirmPassword.current.value != password.current.value ){
+    if( confirmPassword.current.value !== password.current.value ){
         confirmPassword.current.setCustomValidity("Senha nao e igual, por favor confirme!")
     } else{
         const user = {
