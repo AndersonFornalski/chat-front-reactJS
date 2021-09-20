@@ -1,22 +1,86 @@
 .messenger{
-   height: calc(100vh - 70px);
    display: flex;
+   height: calc(100vh - 70px);
+   font-size: 2rem;
 }
-
+/***MENU***/
 .chatMenu{
-    flex: 3.5;
-    background-color: rgb(236, 167, 39);
-    text-align: center;
+    flex: 3;
+}
+.chatMenuInput{
+    font-size: 1rem;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(127, 33, 190);
 }
 
+.chatMenuInput:focus{
+    outline: none;
+}
+
+/***BOX***/
 .chatBox{
     flex: 5.5;
-    background-color: rgb(60, 255, 0);
-    text-align: center;
+    margin-bottom: 50px;
 }
 
+.chatBoxWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.chatBoxTop{
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+.chatBoxBottom{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chatMessageInput{
+    width: 80%;
+    padding: 10px;
+    height: 70px;
+    border: 1px solid silver;
+    border-radius: 20px;    
+}
+.chatMessageInput:hover{
+    border: 2px solid rgb(127, 33, 190);
+}
+.chatMessageInput:focus{
+    outline: none;
+}
+
+.chatSubmitButton{
+    border-radius: 20px;
+    width: 80px;
+    padding: 10px;
+    background-color: rgb(108, 65, 207);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+.chatSubmitButton:hover{
+    background-color: rgb(65, 29, 150);
+}
+
+
+/***ONLINE***/
 .chatOnline{
-    flex: 2;
-    background-color: aqua;
+    flex: 3;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper{
+    padding: 20px;
     text-align: center;
+    height: 100%;
 }
