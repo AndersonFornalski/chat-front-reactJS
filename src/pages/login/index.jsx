@@ -33,7 +33,7 @@ const Login = () => {
             
             <button className="loginButton">
               { isFetching 
-              ? <CircularProgress color="success" size="30px"/> 
+              ? <CircularProgress color="success" size="30px"/>  
               : "Entrar" }
             </button>
             
