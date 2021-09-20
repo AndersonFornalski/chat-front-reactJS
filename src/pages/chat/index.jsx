@@ -24,8 +24,19 @@ const Chat = () => {
         }
         getConversations();
     },[user._id]);
-    
-    console.log(currentChat);
+
+    useEffect(() => {
+        const getMessages = async () => {
+            try {
+                const response = await axios.get("/messages/" + currentChat?._id);
+                setMessages(response.data)
+                console.log(response.data);                
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getMessages();
+    },[currentChat])
 
     return(  
         <> 
@@ -47,27 +58,16 @@ const Chat = () => {
                 <div className="chatBoxWrapper">
                     {
                         currentChat ? (
-                    <>
+                    <>                    
                     <div className="chatBoxTop">
-                       <Message/>             
-                       <Message own={true} />             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message own={true}/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message own={true} />             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message/>             
-                       <Message own={true}/>             
+                    {messages.map((m) => (
+                        <Message
+                               key={m._id}
+                               message={m}
+                               own={m.sender === user._id}/>             
+                     ))}
                     </div>
+                       
                     <div className="chatBoxBottom">
                         <textarea placeholder="escreva uma mensagem..." className="chatMessageInput"></textarea>
                         <button className="chatSubmitButton">Enviar</button>
